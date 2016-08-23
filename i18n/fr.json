@@ -1,0 +1,10 @@
+{
+    "@metadata": {
+        "authors": [
+            "Pierre Boutet"
+        ]
+    },
+	"userswatchbutton-desc": "ajout d'un Button pour suivre un utilisateur",
+	"userswatchbutton-button-text": "Suivre",
+	"userswatchbutton-unwatchbutton-text": "Ne plus suivre"
+}
