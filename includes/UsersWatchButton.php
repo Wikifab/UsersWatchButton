@@ -25,6 +25,7 @@ class UsersWatchButton {
 		$styleUnWatch = $isFollowing ? '' : ' style="display:none"' ;
 
 
+
 		$out = '<a class="UsersWatchButton' . $class . '" data-user="'. $user . '" '.$styleWatch.'>
 			  <button class="btn btn-sm btn-message"><i class="fa fa-user-plus"></i> '.wfMessage( 'userswatchbutton-button-text' )->escaped() . '</button>
 			  </a>';
@@ -88,15 +89,18 @@ class UsersWatchButton {
 
 		$counters = $usersWatchListCore->getUserCounters($user);
 
-		$out = '<div class="users-watch-counters">';
+
+
+
+		$out .= '<div class="users-watch-counters">';
 		// followers counters :
-		$out .='<a href="#followers" aria-controls="followers" role="tab" data-toggle="tab" >';
+		$out .='<a onclick="$(\'#tab-followers a\').click()" href="#followers" aria-controls="followers" role="tab" data-toggle="tab" >';
 		//$out .='<a href="#" class="vcard-stat">';
 		$out .='<strong class="uwc-counter">' . $counters['followers'] . '</strong> ';
 		$out .='<span class="uwc-label">'.wfMessage( 'userswatchbutton-followers' )->escaped() . '</span>';
 		$out .='</a>';
 		// following counters :
-		$out .='<a href="#following" aria-controls="following" role="tab" data-toggle="tab">';
+		$out .='<a onclick="$(\'#tab-following a\').click()" href="#following" aria-controls="following" role="tab" data-toggle="tab">';
 		//$out .='<a href="#" class="vcard-stat">';
 		$out .='<strong class="uwc-counter">' . $counters['following'] . '</strong> ';
 		$out .='<span class="uwc-label">'.wfMessage( 'userswatchbutton-following' )->escaped() . '</span>';
