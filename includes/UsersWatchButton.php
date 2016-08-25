@@ -39,7 +39,7 @@ class UsersWatchButton {
 		$out = '<div class="followUserList row">';
 
 		foreach ($users as $followedUser) {
-			$out .= '<div class="col-md-3 col-sm-6 col-xs-12 followUserListcard">';
+			$out .= '<div class="col-md-4 col-sm-6 col-xs-12 followUserListcard">';
 			$data = [];
 
 			$data['id'] = $followedUser->getId();
