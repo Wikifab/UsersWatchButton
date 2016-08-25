@@ -36,10 +36,10 @@ class UsersWatchButton {
 	}
 
 	private static function formatUsersList($users) {
-		$out = '<div class="followUserList">';
+		$out = '<div class="followUserList row">';
 
 		foreach ($users as $followedUser) {
-			$out .= '<div>';
+			$out .= '<div class="col-md-3 col-sm-6 col-xs-12 followUserListcard">';
 			$data = [];
 
 			$data['id'] = $followedUser->getId();
