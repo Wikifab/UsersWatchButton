@@ -6,5 +6,7 @@
     },
 	"userswatchbutton-desc": "add a button to follow users",
 	"userswatchbutton-button-text": "Follow",
-	"userswatchbutton-unwatchbutton-text": "Unfollow"
+	"userswatchbutton-unwatchbutton-text": "Unfollow",
+	"userswatchbutton-followers": "Followers",
+	"userswatchbutton-following": "Following"
 }

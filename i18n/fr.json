@@ -6,5 +6,7 @@
     },
 	"userswatchbutton-desc": "ajout d'un Button pour suivre un utilisateur",
 	"userswatchbutton-button-text": "Suivre",
-	"userswatchbutton-unwatchbutton-text": "Ne plus suivre"
+	"userswatchbutton-unwatchbutton-text": "Ne plus suivre",
+	"userswatchbutton-followers": "Abonnés",
+	"userswatchbutton-following": "Abonnements"
 }

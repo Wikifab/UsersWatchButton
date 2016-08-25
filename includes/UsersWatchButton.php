@@ -10,6 +10,7 @@
 
 class UsersWatchButton {
 
+	private static $usersWatchListCore = null;
 
 
 	public static function getHtml($user) {
@@ -31,6 +32,76 @@ class UsersWatchButton {
 			  <button class="btn btn-sm btn-message"><i class="fa fa-user-times"></i> '.wfMessage( 'userswatchbutton-unwatchbutton-text' )->escaped() . '</button>
 			  </a>';
 
+		return $out;
+	}
+
+	private static function formatUsersList($users) {
+		$out = '<div class="followUserList">';
+
+		foreach ($users as $followedUser) {
+			$out .= '<div>';
+			$data = [];
+
+			$data['id'] = $followedUser->getId();
+			$data['url'] = $followedUser->getUserPage()->getLinkURL();
+			$avatar = new wAvatar( $data['id'], 'ml' );
+			$data['avatar'] = $avatar->getAvatarURL();
+			$data['name'] = $followedUser->getRealName();
+			if ( ! $data['name']) {
+				$data['name'] = $followedUser->getName();
+			}
+
+			$out .= '<a href="'.$data['url'].'">';
+			$out .= '<div class="avatar">' . $data['avatar'] . '</div>';
+			$out .= '<span class="name">' . $data['name'] . '</span>';
+			$out .= '</a>';
+
+			$out .= '</div>';
+		}
+		$out .= '</div>';
+		return $out;
+
+	}
+
+	public static function getFollowers(User $user) {
+
+		$usersWatchListCore = new UsersWatchListCore();
+
+		$followedUsers = $usersWatchListCore->getUsersFollowersInfo($user);
+
+		return self::formatUsersList($followedUsers);
+
+	}
+
+	public static function getFollowing(User $user) {
+
+		$usersWatchListCore = new UsersWatchListCore();
+
+		$followedUsers = $usersWatchListCore->getUsersWatchListInfo($user);
+
+		return self::formatUsersList($followedUsers);
+	}
+
+	public static function getUsersCounters($user) {
+
+		$usersWatchListCore = new UsersWatchListCore();
+
+		$counters = $usersWatchListCore->getUserCounters($user);
+
+		$out = '<div class="users-watch-counters">';
+		// followers counters :
+		$out .='<a href="#followers" aria-controls="followers" role="tab" data-toggle="tab" >';
+		//$out .='<a href="#" class="vcard-stat">';
+		$out .='<strong class="uwc-counter">' . $counters['followers'] . '</strong> ';
+		$out .='<span class="uwc-label">'.wfMessage( 'userswatchbutton-followers' )->escaped() . '</span>';
+		$out .='</a>';
+		// following counters :
+		$out .='<a href="#following" aria-controls="following" role="tab" data-toggle="tab">';
+		//$out .='<a href="#" class="vcard-stat">';
+		$out .='<strong class="uwc-counter">' . $counters['following'] . '</strong> ';
+		$out .='<span class="uwc-label">'.wfMessage( 'userswatchbutton-following' )->escaped() . '</span>';
+		$out .='</a>';
+		$out .= '</div>';
 		return $out;
 	}
 
