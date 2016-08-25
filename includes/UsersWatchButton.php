@@ -89,10 +89,7 @@ class UsersWatchButton {
 
 		$counters = $usersWatchListCore->getUserCounters($user);
 
-
-
-
-		$out .= '<div class="users-watch-counters">';
+		$out = '<div class="users-watch-counters">';
 		// followers counters :
 		$out .='<a onclick="$(\'#tab-followers a\').click()" href="#followers" aria-controls="followers" role="tab" data-toggle="tab" >';
 		//$out .='<a href="#" class="vcard-stat">';
