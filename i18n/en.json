@@ -8,5 +8,10 @@
 	"userswatchbutton-button-text": "Follow",
 	"userswatchbutton-unwatchbutton-text": "Unfollow",
 	"userswatchbutton-followers": "Followers",
-	"userswatchbutton-following": "Following"
+	"userswatchbutton-following": "Following",
+    "combinedwatchlist-notif-header-message-create": "$1 create page  <strong>$3</strong> ",
+	"combinedwatchlist-notif-header-message-edit": "$1 edit page <strong>$3</strong> ",
+	"combinedwatchlist-notif-body-message": "",
+	"echo-category-title-combinedwatchlist": "Watch list notifications",
+    "echo-pref-tooltip-combinedwatchlist": "Notify me when a user that I follow do a modification."
 }
