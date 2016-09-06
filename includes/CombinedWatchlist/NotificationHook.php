@@ -75,6 +75,7 @@ class NotificationHook {
 						'rc_timestamp' => $rc->getAttribute('rc_timestamp'),
 						'rc_user' => $rc->getAttribute('rc_user'),
 						'rc_type' => $rc->getAttribute('rc_type'), // New page or edit
+						'rc_source' => $rc->getAttribute('rc_source'), // New page or edit
 						'rc_comment' => $rc->getAttribute('rc_comment'),
 						'rc_title' => $rc->getAttribute('rc_title'),
 						'rc_minor' => $rc->getAttribute('rc_minor'),

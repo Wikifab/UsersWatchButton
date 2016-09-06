@@ -13,7 +13,7 @@ class NotificationPresentationModel extends \EchoEventPresentationModel {
 	}
 
 	protected function getHeaderMessageKey() {
-		$type = $this->event->getExtraParam('rc_type');
+		$type = $this->event->getExtraParam('rc_source');
 		if ($type == \RecentChange::SRC_NEW ) {
 			$type = 'create';
 		} else {
