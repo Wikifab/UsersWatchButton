@@ -26,7 +26,11 @@ class NotificationPresentationModel extends \EchoEventPresentationModel {
 		$msg = $this->msg( $this->getHeaderMessageKey() );
 
 		list( $formattedName, $genderName ) = $this->getAgentForOutput();
-		$page = $this->event->getTitle()->getBaseText();
+		if ($this->event->getTitle()) {
+			$page = $this->event->getTitle()->getBaseText();
+		} else {
+			$page ="-";
+		}
 		$msg->params( $formattedName, $genderName, $page );
 
 		return $msg;
