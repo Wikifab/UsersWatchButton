@@ -14,27 +14,5 @@ class EventFormatter extends \EchoBasicFormatter {
     	parent::processParam( $event, $param, $message, $user );
 
     	return;
-
-        if ( $param === 'difflink' ) {
-            $eventData = $event->getExtra();
-            if ( !isset( $eventData['revid'] ) ) {
-                $message->params( '' );
-                return;
-            }
-            $this->setTitleLink(
-                $event,
-                $message,
-                array(
-                    'class' => 'mw-echo-diff',
-                    'linkText' => wfMessage( 'notification-thanks-diff-link' )->text(),
-                    'param' => array(
-                        'oldid' => $eventData['revid'],
-                        'diff' => 'prev',
-                    )
-                )
-            );
-        } else {
-            parent::processParam( $event, $param, $message, $user );
-        }
     }
  }

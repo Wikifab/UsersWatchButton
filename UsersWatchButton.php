@@ -27,6 +27,17 @@ $wgResourceModules['ext.userswatchbutton.js'] = array(
 		'remoteExtPath' => 'UsersWatchButton',
 );
 
+$wgResourceModules['ext.userswatchbutton.icons'] = array(
+		'styles' => array(),
+		'messages' => array(
+		),
+		'dependencies' => array(
+		),
+		'position' => 'top',
+		'localBasePath' => __DIR__ . '/icons',
+		'remoteExtPath' => 'UsersWatchButton/icons',
+);
+
 
 $wgHooks['ParserFirstCallInit'][] = 'userswatchbuttonFunctions';
 $wgHooks['BeforePageDisplay'][] = 'UsersWatchButton::BeforePageDisplay';
@@ -35,7 +46,11 @@ $wgHooks['BeforePageDisplay'][] = 'UsersWatchButton::BeforePageDisplay';
 $wgHooks['ParserFirstCallInit'][] = 'CombinedWatchlist\\NotificationHook::onParserFirstCallInit';
 $wgHooks['RecentChange_save'][] = 'CombinedWatchlist\\NotificationHook::onRecentChange_save';
 $wgHooks['EchoGetDefaultNotifiedUsers'][] = 'CombinedWatchlist\\NotificationHook::onEchoGetDefaultNotifiedUsers';
-
+$wgHooks['EchoGetBundleRules'][] = 'CombinedWatchlist\\NotificationHook::onEchoGetBundleRules';
+$wgHooks['EchoGetDefaultNotifiedUsers'][] = 'NewFollowerNotif\\NotificationHook::onEchoGetDefaultNotifiedUsers';
+$wgHooks['EchoGetBundleRules'][] = 'NewFollowerNotif\\NotificationHook::onEchoGetBundleRules';
+$wgHooks['UsersWatchList-newFollower'][] = 'NewFollowerNotif\\NotificationHook::onNewFollower';
+$wgHooks['BeforeCreateEchoEvent'][] = 'NewFollowerNotif\\NotificationHook::onBeforeCreateEchoEvent';
 
 # Parser function to insert a link changing a tab.
 function userswatchbuttonFunctions( $parser ) {
@@ -52,6 +67,8 @@ $wgAutoloadClasses['CombinedWatchlist\\EventFormatter'] = __DIR__ . "/includes/C
 $wgAutoloadClasses['CombinedWatchlist\\NotificationPresentationModel'] = __DIR__ . "/includes/CombinedWatchlist/NotificationPresentationModel.php";
 $wgAutoloadClasses['CombinedWatchlist\\NotificationHook'] = __DIR__ . "/includes/CombinedWatchlist/NotificationHook.php";
 $wgAutoloadClasses['CombinedWatchlist\\WatchlistModelConnector'] = __DIR__ . "/includes/CombinedWatchlist/WatchlistModelConnector.php";
+$wgAutoloadClasses['NewFollowerNotif\\NotificationPresentationModel'] = __DIR__ . "/includes/NewFollowerNotif/NotificationPresentationModel.php";
+$wgAutoloadClasses['NewFollowerNotif\\NotificationHook'] = __DIR__ . "/includes/NewFollowerNotif/NotificationHook.php";
 $wgMessagesDirs['UsersWatchButton'][] = __DIR__ . "/i18n";
 
 // Allow translation of the parser function name
@@ -59,6 +76,7 @@ $wgExtensionMessagesFiles['UsersWatchButtonMagic'] = __DIR__ . '/UsersWatchButto
 
 
 // connection with the 'Notification' extension ('Echo')
+// Notification on watchlist
 $wgEchoNotificationCategories['combinedwatchlist'] = array(
 		'priority' => 3,
 		'tooltip' => 'echo-pref-tooltip-combinedwatchlist',
@@ -75,6 +93,23 @@ $wgEchoNotifications['combinedwatchlist'] = array(
 		'section' => 'message', // 'message' or 'alert'
 );
 
+// Notification new follower
+$wgEchoNotificationCategories['newfollower'] = array(
+		'priority' => 3,
+		'tooltip' => 'echo-pref-tooltip-newfollower',
+);
+$wgEchoNotifications['newfollower'] = array(
+		'category' => 'newfollower',
+		//'bundle' => array( 'web' => true, 'email' => true ),
+		'formatter-class' => 'EchoBasicFormatter',
+		'presentation-model' => 'NewFollowerNotif\\NotificationPresentationModel',
+		'title-message' => 'newfollower-notif-title-message',
+		'email-subject-message' => 'newfollower-notif-email-subject-message',
+		'email-body-batch-message' => 'newfollower-notif-email-body-batch-message',
+		'title-message' => 'newfollower-notif-title-message',
+		'section' => 'message', // 'message' or 'alert'
+);
+
 //default email notification period
 // -1  : no email
 // 0 : instant email
@@ -85,5 +120,7 @@ $wgDefaultUserOptions['echo-email-frequency'] = 1;
 // Echo notification subscription preference
 $wgDefaultUserOptions['echo-subscriptions-web-combinedwatchlist'] = true;
 $wgDefaultUserOptions['echo-subscriptions-email-combinedwatchlist'] = true;
+$wgDefaultUserOptions['echo-subscriptions-web-newfollower'] = true;
+$wgDefaultUserOptions['echo-subscriptions-email-newfollower'] = true;
 
 

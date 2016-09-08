@@ -25,7 +25,6 @@ class UsersWatchButton {
 		$styleUnWatch = $isFollowing ? '' : ' style="display:none"' ;
 
 
-
 		$out = '<a class="UsersWatchButton' . $class . '" data-user="'. $user . '" '.$styleWatch.'>
 			  <button class="btn btn-sm btn-message"><i class="fa fa-user-plus"></i> '.wfMessage( 'userswatchbutton-button-text' )->escaped() . '</button>
 			  </a>';
@@ -138,6 +137,7 @@ class UsersWatchButton {
 		if ( ! $data['creator']) {
 			$data['creator'] = $creator->getName();
 		}*/
+
 
 		$out = '<button class="userswatchbutton">';
 		$out .= '</button>';
