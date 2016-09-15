@@ -11,8 +11,16 @@
 	};
 
 
+	function displayModal() {
+		$( "#connectionRequiredModal" ).modal();
+	}
 
 	$('.UsersWatchButton').click(function() {
+		
+		if (typeof wgUserId == 'undefined') {
+			displayModal();
+			return;
+		}
 		
 		var userToFollow = $(this).attr('data-user');
 		var button = this;
