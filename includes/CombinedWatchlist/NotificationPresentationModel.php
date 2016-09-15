@@ -43,6 +43,9 @@ class NotificationPresentationModel extends \EchoEventPresentationModel {
 
 
 	public function getPrimaryLink(){
+		if( ! $this->event->getTitle()) {
+			return null;
+		}
 		return $this->getPageLink($this->event->getTitle(), '', true);
 	}
 
