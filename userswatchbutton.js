@@ -17,7 +17,7 @@
 
 	$('.UsersWatchButton').click(function() {
 		
-		if (typeof wgUserId == 'undefined') {
+		if (typeof mw.config.wgUserId == 'undefined') {
 			displayModal();
 			return;
 		}
