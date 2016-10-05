@@ -27,8 +27,15 @@ class NotificationPresentationModel extends \EchoEventPresentationModel {
 
 	public function getBodyMessage() {
 		$key = 'combinedwatchlist-notif-body-message';
-		return $this->msg( $key );
+		$msg = $this->msg( $key );
+		list( $formattedName, $genderName ) = $this->getAgentForOutput();
+		$page = $this->event->getTitle()->getBaseText();
+		$agentLink = $this->getAgentLink();
+		$msg->params( $formattedName, $genderName, $page, $agentLink );
+		return $msg;
 	}
+
+
 
 
 	public function getPrimaryLink(){

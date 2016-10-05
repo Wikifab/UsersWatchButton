@@ -33,6 +33,7 @@ class NotificationHook {
 				),
 				'agent' => $user,
 		) );
+
 	}
 
 	public static function onEchoGetDefaultNotifiedUsers(\EchoEvent $event, &$users ) {
