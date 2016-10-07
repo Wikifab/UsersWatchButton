@@ -111,34 +111,6 @@ class UsersWatchButton {
 
 	public static function addParser( $input, $type = 'top', $number = 4 ) {
 
-
-
-		/*$title = $input->getTitle();
-
-		$page = WikiPage::factory( $title );
-
-
-		$creator = $page->getCreator();
-
-		if ( ! $creator) {
-			// this occur when creating a new page
-			return array( '', 'noparse' => true, 'isHTML' => true );
-		}
-
-		$data = [];
-		$data['creatorId'] = $creator->getId();
-		$data['creatorUrl'] = $creator->getUserPage()->getLinkURL();
-		$data['creatorName'] = $creator->getName();
-
-		$avatar = new wAvatar( $data['creatorId'], 'ml' );
-		$data['creatorAvatar'] = $avatar->getAvatarURL();
-
-		$data['creator'] = $creator->getRealName();
-		if ( ! $data['creator']) {
-			$data['creator'] = $creator->getName();
-		}*/
-
-
 		$out = '<button class="userswatchbutton">';
 		$out .= '</button>';
 
