@@ -15,6 +15,14 @@
 		$( "#connectionRequiredModal" ).modal();
 	}
 
+	$('.btn-message').click(function() {
+		if (typeof wgUserId == 'undefined') {
+			displayModal();
+			return false;
+		}
+		return true;
+	});
+
 	$('.UsersWatchButton').click(function() {
 		
 		if (typeof wgUserId == 'undefined') {
