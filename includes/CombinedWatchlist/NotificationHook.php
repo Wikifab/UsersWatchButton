@@ -18,6 +18,11 @@ class NotificationHook {
 				$extra = $event->getExtra();
 				$agentId = $event->getAgent()->getId();
 
+				if (  $event->getTitle()->getNamespace() == NS_FILE) {
+					// we do not notify people on file upload
+					break;
+				}
+
 
 				// get users watching getFollowersIds($userId);
 				$followingUserUsersIds = \UsersWatchListCore::getInstance()->getFollowersIds($extra['rc_user']);

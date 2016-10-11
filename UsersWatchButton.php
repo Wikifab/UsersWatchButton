@@ -91,6 +91,7 @@ $wgEchoNotifications['combinedwatchlist'] = array(
 		'email-body-batch-message' => 'combinewatchlist-notif-email-body-batch-message',
 		'title-message' => 'combinewatchlist-notif-title-message',
 		'section' => 'message', // 'message' or 'alert'
+		'bundle' => array( 'web' => true, 'email' => true )
 );
 
 // Notification new follower
