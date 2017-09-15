@@ -18,6 +18,9 @@ class NotificationHook {
 				$extra = $event->getExtra();
 				$agentId = $event->getAgent()->getId();
 
+				if ( ! $event->getTitle()) {
+					break;
+				}
 				if (  $event->getTitle()->getNamespace() != NS_MAIN) {
 					// we do not notify people on file upload
 					break;
