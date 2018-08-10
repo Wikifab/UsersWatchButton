@@ -1,7 +1,7 @@
 {
-    "name": "wikifab/UsersWatchButton",
+    "name": "wikifab/users-watch-button",
     "type": "mediawiki-extension",
     "require": {
-		"wikifab/UsersWatchlist":"*"
+		"wikifab/users-watchlist":"*"
     }
 }
