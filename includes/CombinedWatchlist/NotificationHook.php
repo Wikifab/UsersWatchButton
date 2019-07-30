@@ -16,7 +16,7 @@ class NotificationHook {
 
 				$title = $event->getTitle();
 				$extra = $event->getExtra();
-				$agentId = $event->getAgent()->getId();
+				$agentId = $event->getAgent() ? $event->getAgent()->getId() : null;
 
 				if ( ! $event->getTitle()) {
 					break;
@@ -131,3 +131,4 @@ class NotificationHook {
 Hooks::run( 'AbortEmailNotification', [ $editor, $title, $this ] ) ) {
 					# @todo FIXME: This would be better as an extension hook
 					*/
+
