@@ -116,7 +116,7 @@ $wgEchoNotifications['newfollower'] = array(
 // 0 : instant email
 // 1 : every day
 // 7 : every weeks
-$wgDefaultUserOptions['echo-email-frequency'] = 1;
+//$wgDefaultUserOptions['echo-email-frequency'] = 1;
 
 // Echo notification subscription preference
 $wgDefaultUserOptions['echo-subscriptions-web-combinedwatchlist'] = true;
